@@ -1,0 +1,106 @@
+/* Fluid space scale */
+
+:root {
+  --space-3xs: clamp(
+    calc(round((var(--font-size-min) * 0.25) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 0.25) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 0.25) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 0.25) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-2xs: clamp(
+    calc(round((var(--font-size-min) * 0.5) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 0.5) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 0.5) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 0.5) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-xs: clamp(
+    calc(round((var(--font-size-min) * 0.75) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 0.75) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 0.75) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 0.75) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-s: clamp(
+    calc(round((var(--font-size-min) * 1) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 1) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 1) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 1) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-m: clamp(
+    calc(round((var(--font-size-min) * 1.5) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 1.5) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 1.5) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 1.5) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-l: clamp(
+    calc(round((var(--font-size-min) * 2) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 2) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 2) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 2) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-xl: clamp(
+    calc(round((var(--font-size-min) * 3) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 3) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 3) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 3) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-2xl: clamp(
+    calc(round((var(--font-size-min) * 4) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 4) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 4) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 4) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-3xl: clamp(
+    calc(round((var(--font-size-min) * 6) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * 6) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * 6) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * 6) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  /* One-up pairs - fluid spacing between adjacent steps */
+  --space-3xs-2xs: clamp(
+    calc(round((var(--font-size-min) * 0.25) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 0.25) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 0.5) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 0.25) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 0.5) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-2xs-xs: clamp(
+    calc(round((var(--font-size-min) * 0.5) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 0.5) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 0.75) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 0.5) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 0.75) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-xs-s: clamp(
+    calc(round((var(--font-size-min) * 0.75) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 0.75) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 1) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 0.75) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 1) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-s-m: clamp(
+    calc(round((var(--font-size-min) * 1) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 1) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 1.5) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 1) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+      calc(round((var(--font-size-max) * 1.5) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-m-l: clamp(
+    calc(round((var(--font-size-min) * 1.5) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 1.5) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 2) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 1.5) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 2) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-l-xl: clamp(
+    calc(round((var(--font-size-min) * 2) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 2) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 3) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 2) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 3) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-xl-2xl: clamp(
+    calc(round((var(--font-size-min) * 3) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 3) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 4) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 3) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 4) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --space-2xl-3xl: clamp(
+    calc(round((var(--font-size-min) * 4) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-min) * 4) / var(--root-size) * 100) / 100 * 1rem + (round((var(--font-size-max) * 6) / var(--root-size) * 100) / 100 - round((var(--font-size-min) * 4) / var(--root-size) * 100) / 100) * ((100vw - (var(--viewport-min) * 1px)) / (var(--viewport-max) - var(--viewport-min)))),
+    calc(round((var(--font-size-max) * 6) / var(--root-size) * 100) / 100 * 1rem)
+  );
+}

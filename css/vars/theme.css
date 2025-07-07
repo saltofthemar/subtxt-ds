@@ -1,0 +1,37 @@
+:root {
+  /* Background colours */
+  --bg-light: var(--color-tertiary-light);
+  --bg-dark: var(--color-primary-dark);
+
+  /* Text colours */
+  --text-light: var(--color-tertiary-light);
+  --text-dark: var(--color-primary-dark);
+
+  /* Heading colours */
+  --heading-light: var(--color-secondary);
+  --heading-light-alt: var(--color-primary-light);
+  --heading-dark: var(--color-neutral);
+  --heading-dark-alt: var(--color-primary);
+
+  /* Highlight colour */
+  --highlight-bg: var(--color-accent-light);
+  --highlight-text: var(--color-accent-dark);
+
+  /* Interactive features */
+  --focus: var(--color-tertiary);
+}
+
+.light-theme {
+  /* Default theme is light */
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-dark);
+  --heading-color: var(--heading-dark);
+  --heading-alt-color: var(--heading-dark-alt);
+}
+
+.dark-theme {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-light);
+  --heading-color: var(--heading-light);
+  --heading-alt-color: var(--heading-light-alt);
+}

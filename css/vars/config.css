@@ -1,0 +1,17 @@
+/* Core configuration for fluid scaling of type and space */
+ 
+:root {
+  /* Core settings */
+  --root-size: 16;  /* Browser's default font size in pixels */
+  --viewport-min: 320;  /* Minimum viewport width in pixels */
+  --viewport-max: 1240;  /* Maximum viewport width in pixels */
+
+  /* Base font sizes */
+  --font-size-min: 18;  /* Base font size at minimum viewport in pixels */
+  --font-size-max: 22;  /* Base font size at maximum viewport in pixels */
+
+  /* Type scale ratios */
+  --min-ratio: 1.2;  /* Type scale ratio at minimum viewport */
+  --max-ratio: 1.333;  /* Type scale ratio at maximum viewport */
+}
+

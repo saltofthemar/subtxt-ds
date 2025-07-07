@@ -1,0 +1,24 @@
+/* Colors */
+
+:root {
+  /* Base palette */
+  --color-primary: hsl(189, 27%, 29%);
+  --color-secondary: hsl(56, 28%, 50%);
+  --color-tertiary: hsl(36, 90%, 50%);
+  --color-accent: hsl(20, 75%, 42%);
+  --color-neutral: hsl(327, 9%, 40%);
+
+  /* Light variations (calculated from base palette) */
+  --color-primary-light: hsl(from var(--color-primary) h s calc(l + 40));
+  --color-secondary-light: hsl(from var(--color-secondary) h s calc(l + 40));
+  --color-tertiary-light: hsl(from var(--color-tertiary) h s calc(l + 40));
+  --color-accent-light: hsl(from var(--color-accent) h s calc(l + 40));
+  --color-neutral-light: hsl(from var(--color-neutral) h s calc(l + 40));
+
+  /* Dark variations (calculated from base palette) */
+  --color-primary-dark: hsl(from var(--color-primary) h s calc(l - 20));
+  --color-secondary-dark: hsl(from var(--color-secondary) h s calc(l - 25));
+  --color-tertiary-dark: hsl(from var(--color-tertiary) h s calc(l - 25));
+  --color-accent-dark: hsl(from var(--color-accent) h s calc(l - 25));
+  --color-neutral-dark: hsl(from var(--color-neutral) h s calc(l - 25));
+}

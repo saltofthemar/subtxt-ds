@@ -1,0 +1,25 @@
+:root {
+  /* Transitions */
+  --transition-time: 0.3s;
+
+  /* Lines */
+  --stroke-width: 2px;
+  --stroke: var(--stroke-width) solid var(--color-primary);
+  --stroke-dashed: var(--stroke-width) dashed var(--color-primary);
+
+  /* Radii */
+  --radius-s: 0.2rem;
+  --radius-m: 0.75rem;
+  --radius-l: 2.5rem;
+
+  /* Gradients */
+  --gradient-start: var(--color-accent);
+  --gradient-end: var(--color-accent);
+
+}
+
+* {
+  transition: background-color var(--transition-time), 
+              color var(--transition-time), 
+              border-color var(--transition-time);
+}

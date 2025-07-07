@@ -1,0 +1,12 @@
+/* 
+ * Math functions used to calculate key values for fluidity.
+ * - Not meant to be edited directly 
+ * - Edit vars/config.css to alter the type and space scales. 
+ */
+
+:root {
+  --viewport-range: calc(var(--viewport-max) - var(--viewport-min));
+  --font-size-range: calc(var(--font-size-max) - var(--font-size-min));
+  --font-size-slope: calc(var(--font-size-range) / var(--viewport-range) * 100);
+  --font-size-intercept: calc(var(--font-size-min) - (var(--viewport-min) * var(--font-size-range) / var(--viewport-range)));
+}

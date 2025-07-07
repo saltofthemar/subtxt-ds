@@ -1,0 +1,19 @@
+{
+  "name": "subtxt-ds",
+  "version": "1.0.0",
+  "description": "Subtxt DS build tools with dual Deno/Node.js support",
+  "type": "module",
+  "scripts": {
+    "build": "node postcss-tools/node/postcss.js",
+    "build:watch": "node --watch postcss-tools/node/postcss.js"
+  },
+  "dependencies": {
+    "postcss": "^8.4.31",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^9.3.0",
+    "color-convert": "^2.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

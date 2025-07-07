@@ -1,0 +1,33 @@
+/* Typography */
+
+:root {
+  /* Available typefaces (defined in /css/global/fonts.css)  */
+  --font-display: "Bitcount Grid Double", system-ui, sans-serif;
+  --font-serif: "Crimson Text", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, monospace;
+
+  /* Default assignments for base text and headings */
+  --font-base: var(--font-serif);
+  --font-heading: var(--font-serif);
+  --font-code: var(--font-mono);
+
+  /* Font weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+  --font-black: 900;
+
+  /* Leading */
+  --leading-micro: 0.85;
+  --leading-flat: 1;
+  --leading-fine: 1.25;
+  --leading-standard: 1.4;
+  --leading-loose: 1.7;
+
+  /* Kerning */
+  --uppercase-kerning: 0.04ch;
+
+  /* Measure */
+  --measure: 60ch;
+}

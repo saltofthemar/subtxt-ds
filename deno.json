@@ -1,0 +1,16 @@
+{
+  "tasks": {
+    "build": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --node-modules-dir=false postcss-tools/deno/postcss.ts",
+    "build:watch": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --node-modules-dir=false --watch postcss-tools/deno/postcss.ts"
+  },
+  "imports": {
+    "postcss": "npm:postcss",
+    "postcss-import": "npm:postcss-import",
+    "postcss-preset-env": "npm:postcss-preset-env",
+    "color-convert": "npm:color-convert"
+  },
+  "lint": {
+    "exclude": ["postcss-tools/node/"]
+  },
+  "nodeModulesDir": "none"
+}

@@ -1,0 +1,96 @@
+/* Fluid type scale */
+
+:root {
+  /* Negative steps */
+  --size-step-000: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), -2)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), -2)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), -2)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), -2)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-00: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), -1)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), -1)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), -1)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), -1)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  /* Base size */
+  --size-step-0: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 0)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 0)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 0)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 0)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  /* Positive steps */
+  --size-step-1: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 1)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 1)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 1)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 1)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-2: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 2)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 2)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 2)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 2)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-3: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 3)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 3)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 3)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 3)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-4: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 4)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 4)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 4)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 4)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-5: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 5)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 5)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 5)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 5)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-6: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 6)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 6)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 6)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 6)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-7: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 7)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 7)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 7)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 7)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-8: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 8)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 8)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 8)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 8)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-9: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 8)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 8)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 9)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 9)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-10: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 10)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 10)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 10)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 10)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-11: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 11)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 11)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 11)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 11)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+
+  --size-step-12: clamp(
+    calc(round((var(--font-size-min) * pow(var(--min-ratio), 12)) / var(--root-size) * 100) / 100 * 1rem),
+    calc(round((var(--font-size-intercept) * pow(var(--min-ratio), 12)) / var(--root-size) * 100) / 100 * 1rem + round((var(--font-size-slope) * pow(var(--min-ratio), 12)) * 100) / 100 * 1vw),
+    calc(round((var(--font-size-max) * pow(var(--max-ratio), 12)) / var(--root-size) * 100) / 100 * 1rem)
+  );
+}

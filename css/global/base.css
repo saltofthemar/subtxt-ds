@@ -1,0 +1,411 @@
+/*
+ *  Base styles
+ *
+ *  Low-specificity, global styles that apply to the whole
+ *  project using the CUBE methodology: https://cube.fyi/css.html
+ */
+
+* {
+  max-inline-size: var(--measure);
+}
+
+:is(html, body, div, header, nav, main, section, footer) {
+  max-inline-size: none;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--size-step-1);
+  font-family: var(--font-base);
+  line-height: var(--leading-standard);
+  font-size-adjust: from-font;
+  margin: 0;
+}
+
+:is(h1, h2, h3, h4) {
+  line-height: var(--leading-fine);
+  text-wrap: balance;
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  color: var(--heading-color); /* Fallback first */
+  background: var(--heading-color);
+  background: linear-gradient(140deg,var(--heading-alt-color) 0%, var(--heading-color) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Standard approach, will override the fallback */
+}
+
+:is(h5,h6) {
+  line-height: var(--leading-standard);
+  text-wrap: balance;
+  font-family: var(--font-sans);
+  color: var(--heading-color);
+}
+
+h1 {
+  font-size: var(--size-step-9);
+  max-width: 22ch;
+}
+
+h2 {
+  font-size: var(--size-step-8);
+  max-width: 35ch;
+}
+
+h3 {
+  font-size: var(--size-step-7);
+  max-width: 35ch;
+}
+
+/*:is(h4, h5, h6) {
+    font-size: var(--size-step-3);
+}*/
+
+h4 {
+  font-size: var(--size-step-6);
+}
+
+h5 {
+  font-size: var(--size-step-5);
+}
+
+h6 {
+  font-size: var(--size-step-4);
+}
+
+small {
+  font-size: var(--size-step-0);
+}
+
+ins {
+  text-decoration: underline;
+  color: var(--text-dark);
+  background: var(--color-neutral-light);
+  padding-inline: 0.3em;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+mark {
+  background: var(--highlight-bg);
+  padding-inline: 0.3em;
+}
+
+:is(code, kbd, samp) {
+  font-family: var(--font-code);
+  padding: 0.2em 0.2em 0.05em 0.2em;
+  hyphens: none;
+  tab-size: 2;
+  text-align: left;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  box-decoration-break: clone;
+  color: var(--text-light);
+  background: var(--color-neutral-dark);
+  border: var(--stroke-dashed);
+}
+
+/* This is quite a new property, so we want code styles to at least, not be huge or tiny */
+@supports not (font-size-adjust: from-font) {
+  :is(code, kbd, samp) {
+    font-size: var(--font-size-1);
+  }
+}
+
+pre:has(code) {
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  color: var(--text-light);
+  background: var(--color-neutral-dark);
+  margin-inline: 0;
+  padding: 0.2em 0.2em 0.05em 0.2em;
+}
+
+pre code {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+kbd {
+  padding-block-end: 0.1em;
+}
+
+var {
+  font-style: normal;
+  font-weight: var(--font-medium);
+}
+
+q {
+  font-style: italic;
+}
+
+ul:not([class]) {
+  padding-inline-start: 1.7ch; /* 1.7ch is the magical width of the bullet point that keeps discs on outside edge */
+  list-style-type: disc;
+}
+
+ul:not([class]) > li {
+  padding-inline-start: var(--space-xs);
+}
+
+:is(ol, ul):not([class]) li + * {
+  margin-block-start: var(--flow-space, var(--space-xs));
+}
+
+ul ::marker {
+  font-size: 0.8lh;
+}
+
+ol ::marker {
+  font-size: 1em;
+  font-weight: var(--font-bold);
+}
+
+/* Lists with classes and roles will be out of standard flow, so remove the default spacing */
+[role='list'][class],
+[role='tablist'][class] {
+  margin-block: 0;
+  padding: 0;
+}
+
+dt {
+  font-weight: var(--font-medium);
+}
+
+dt + dd {
+  margin-block-start: var(--space-xs);
+}
+
+dd + dt {
+  margin-block-start: var(--space-s);
+}
+
+dd {
+  margin-inline-start: 1.5ch;
+}
+
+blockquote {
+  margin-inline: 0;
+  color: var(--bg-color);
+  background: var(--text-color);
+  padding: var(--space-l);
+}
+
+blockquote footer {
+  margin-block-start: var(--space-s);
+  color: var(--text-color);
+  font-size: var(--size-step-0);
+}
+
+blockquote q {
+  font-style: normal;
+}
+
+:is(video, iframe[src*='youtube'], iframe[src*='vimeo']) {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+figcaption {
+  padding-block-start: 0.5em;
+  font-size: var(--size-step-0);
+  font-family: var(--font-code);
+}
+
+table {
+  border: var(--stroke);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: var(--font-bold);
+  line-height: var(--leading-fine);
+}
+
+thead th {
+  padding-block: var(--space-s);
+}
+
+td,
+th {
+  padding: var(--space-xs) var(--space-s);
+}
+
+th:not(:only-of-type) {
+  border-block-end: var(--stroke);
+}
+
+th:only-of-type {
+  border-inline-end: var(--stroke);
+}
+
+:is(th, td) ~ :is(th, td) {
+  border-inline-start: var(--stroke);
+}
+
+tr + tr :is(th, td) {
+  border-block-start: var(--stroke);
+}
+
+caption {
+  caption-side: bottom;
+  margin-block-start: var(--space-s);
+}
+
+a:not([class]):hover {
+  text-underline-offset: 0.2lh;
+}
+
+:is(h1, h2, h3, h4) a:not([class]) {
+  text-decoration-thickness: 0.1ex;
+  text-underline-offset: 0.2ex;
+}
+
+:is(h1, h2, h3, h4) a:not([class]):hover {
+  text-underline-offset: 0.3ex;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px dashed var(--focus, currentColor);
+  outline-offset: var(--focus-offset, 0.2lh);
+}
+
+/*
+ *  Applies some margin only when an element is targeted.
+ *  Doesn't affect layout; adds space to stop bumping top of screen when using anchor links.
+ *  Triggers a scroll, and scroll-margin steps in. Can also use this for scroll snapping contexts.
+ */
+:target {
+  scroll-margin-block: 5lh;
+}
+
+/* Will apply when user selects text */
+::selection {
+  color: var(--bg-color);
+  background: var(--text-color);
+}
+
+/* If a <hr> finds itself in a .flow context, it will use the the --flow-space custom property, otherwise it will use --space-xl */
+hr {
+  border: none;
+  border-block-start: var(--stroke);
+  margin-block: var(--flow-space, var(--space-xl));
+}
+
+/* SVGs without a class will have an auto width set, limiting their height to 1lh */
+svg:not([class]) {
+  width: auto;
+  height: 1lh;
+}
+
+/* Tells all SVG elements not to shrink in flex contexts; we can also use flex:none */
+svg {
+  flex-shrink: 0;
+}
+
+/* If an SVG has a role of img with width and height attributes, it will use those to set its dimensions */
+svg[role='img'][width][height] {
+  width: revert;
+  height: revert;
+  background: var(--color-neutral-dark); /* Fallback for when the SVG doesn't have a background */
+  padding: var(--space-xs);
+}
+
+/* There's a .flow composition, but this prevents forms from having to have that applied where markup is harder to control in certain systems. It still uses the --flow-space variables though to make managing space easier */
+form > * + * {
+  margin-top: var(--flow-space, 1rem);
+}
+
+/* We can now customise the colour of elements like checkboxes and radio buttons */
+:is(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+  padding: 0.5em 0.8em; /* We use em units here to make sure padding scales with text */
+  border-radius: var(--radius-s);
+  border: var(--stroke-solid);
+  background: hsl(from var(--bg-color) h s calc(l + 6));
+  color: var(--text-color);
+  width: 100%; /* Forces full width fields */
+
+  &::placeholder { /* It's okay once in a while to use CSS nesting for little flairs like this */
+    color: hsl(from var(--text-color) h s calc(l - 20));
+    opacity: 1; /* We set opacity to 1 because Firefox adds opacity to placeholders */
+  }
+}
+
+/* Set a thicker font weight and a finer line height for form labels */
+label {
+  line-height: var(--leading-fine);
+  font-weight: var(--font-medium);
+}
+
+/* Creates a line break, allowing the label itself to remain as an inline element */
+label::after {
+  content: '\A';
+  white-space: pre;
+}
+
+/* Checkbox and radio buttons will be wrapped in a <label> so when a user interacts with the label, it toggles the control */
+label:has(input) {
+  display: flex; /* Give ourselves more layout and text-flow control with flex */
+  align-items: baseline; /* Aligns control with the baseline of the first line of text */
+  gap: var(--space-s);
+  font-weight: var(--font-normal);
+}
+
+label:has(input) + label:has(input) {
+  --flow-space: var(--space-s-m);
+}
+
+/* An "optical adjustment" to slightly adjust the vertical position of the check/radio to accomodate the basline set above */
+label:has(input) input {
+  transform: translateY(-0.1ex); /* Uses the ex unit which will scale nicely with text */
+}
+
+input:disabled {
+  background: var(--color-neutral);
+}
+
+/* Affects anything that follows a disabled input that is inside a label element */
+input:disabled,
+label input:disabled + * {
+  cursor: not-allowed; /* Gives the user a little visual hint that the element is disabled */
+}
+
+fieldset {
+  border: var(--stroke);
+  padding: var(--space-s);
+}
+
+legend {
+  font-weight: var(--font-medium);
+  padding-inline: var(--space-xs);
+}
+
+summary {
+  font-weight: var(--font-bold);
+  cursor: pointer; /* Controversial? Makes sure tappable/clickable elements feel that way */
+}
+
+details[open] summary {
+  margin-block-end: var(--space-s);
+}
