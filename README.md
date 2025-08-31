@@ -3,20 +3,24 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![GitHub release](https://img.shields.io/github/v/release/saltofthemar/subtxt-ds)](https://github.com/saltofthemar/subtxt-ds/releases)
 
-Subtxt DS is a fluid CSS-based design system that generates a set of algorithmically calculated custom properties that interact gracefully with markup in viewports of all sizes, maintaining typographic and spatial relationships at any scale using only CSS with zero dependencies. 
+Subtxt DS is a fluid CSS-based design system that generates a set of algorithmically calculated custom properties, providing styles that maintain typographic and spatial relationships in viewports of all sizes, without using media queries. We can now achieve this using vanilla CSS, and that is exciting!
 
-This project was originally designed to be a starting template for CSS in new projects, but has since been expanded to include a build system and design tokens. The CSS reset and base style definitions in the `css/global` folder are [completely based on code shared by Andy Bell of Piccalilli](https://piccalil.li/blog/a-more-modern-css-reset/), with only some small changes, and aim to follow the [CUBE methodology](https://cube.fyi/css.html).
+## Build it with PostCSS and Deno or Node.js (or don't)
 
-## Build with PostCSS and Deno or Node.js (or don't)
-We recommend you use our (optional) dual-runtime build system with PostCSS via either Deno or Node.js to generate your production stylesheet. Building will provide you with a set of JSON design tokens that can be used with Penpot and other tools, and a hex color palette that can be used for accessibility testing. Not only will your finished CSS at `dist/styles.css` be more readable, it will also be optimized for browser compatibility.
+Subtxt DS was originally created to explore a pure CSS solution to scalable type and interfaces using some of CSS's new math features. It has since been expanded to include a PostCSS build which generates a more succinct production stylesheet, along with a couple of design goodies.
 
-If you don't want to use the build system, you can still use the CSS as-is by dropping the whole css folder into your own project and using `css/styles.css` as your stylesheet.
+To level up, we recommend you use PostCSS with our (optional) dual-runtime build system (use either Deno or Node.js -- whatever you like best) to generate your production stylesheet. Subtxt DS includes some fancy custom PostCSS plugins, described below, and building with it will also provide you with:
+- A more succinct, readable production stylesheet (located at `dist/styles.css`) that is optimized for browser compatibility
+- A set of JSON design tokens that can be used with Penpot and other tools
+- A hex color palette that can be used for accessibility testing
 
-### Design goodies for you
-After building the project with either Deno or Node.js, you can find all your yummy new design goodies in the `dist` folder:
+If you don't want to use PostCSS and the build system, you can still use the CSS as-is by dropping the whole `css` folder into your own project and using `css/styles.css` as your stylesheet.
+
+### How to use these extra design goodies?
+After building the project with either Deno or Node.js, all yummy new design goodies will be located in the `dist` folder. Here's how to use them:
   - Drop the newly minted `dist/styles.css` file into any platform's CSS folder
   - Import the generated, compatible design tokens in `dist/design-tokens-penpot.json` into Penpot
-  - Import the generated, WCAG-compliant design tokens in `dist/design-tokens-all.json` into other design tools 
+  - Import the generated, WCAG-compliant design tokens in `dist/design-tokens-all.json` into other tools that use design tokens
   - Use the generated hex color palette in `dist/hex-color-palette.txt` for accessibility testing at [Are My Colors Accessible](https://www.aremycolorsaccessible.com/palette)
 
 ## Key Features
@@ -168,6 +172,8 @@ The dual-runtime setup allows you to use whichever environment you prefer while 
 6. You can test your styles by viewing the `kitchen-sink.html` file in the demo folder.
 
 ## License
+
+The CSS reset and base style definitions in the `css/global` folder are [completely based on code shared by Andy Bell of Piccalilli](https://piccalil.li/blog/a-more-modern-css-reset/), with only some small changes, and aim to follow the [CUBE methodology](https://cube.fyi/css.html).
 
 Subtxt DS is licensed under the GNU General Public License v3.0. See the [LICENSE](./LICENSE) file for details.
 
