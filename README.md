@@ -17,37 +17,27 @@ To level up, we recommend you use PostCSS with our (optional) dual-runtime build
 If you don't want to use PostCSS and the build system, you can still use the CSS as-is by dropping the whole `css` folder into your own project and using `css/styles.css` as your stylesheet.
 
 ### How to use these extra design goodies?
-After building the project with either Deno or Node.js, all yummy new design goodies will be located in the `dist` folder. Here's how to use them:
+After building the project with either Deno or Node.js, all yummy new design goodies will be located in the `dist` folder. Here's how you might like to use them:
   - Drop the newly minted `dist/styles.css` file into any platform's CSS folder
   - Import the generated, compatible design tokens in `dist/design-tokens-penpot.json` into Penpot
   - Import the generated, WCAG-compliant design tokens in `dist/design-tokens-all.json` into other tools that use design tokens
   - Use the generated hex color palette in `dist/hex-color-palette.txt` for accessibility testing at [Are My Colors Accessible](https://www.aremycolorsaccessible.com/palette)
 
+
 ## Key Features
 
-- **Pure CSS**: Uses only standard CSS features (custom properties, calc, clamp, pow, round) to achieve fluid type and spacing scales
-- **Zero (required) dependencies**: No preprocessors or JavaScript required, although it's worth it to use a Deno or Node.js runtime to build the CSS, since you get a more streamlined stylesheet with better browser compatibility
+- **Pure CSS**: Uses only vanilla CSS features (custom properties, calc, clamp, pow, round) to achieve fluid type and spacing scales
+- **Zero (required) dependencies**: No preprocessors or JavaScript required, although it's worth it to use a Deno or Node.js runtime to build the CSS
 - **PostCSS ready**: Optional PostCSS configurations for both Deno and Node.js environments are provided, along with custom plugins for processing colors and exports into design tokens
-- **Platform-independent**: Fully interoperable with any tech stack or framework -- you can use the CSS as is, or with PostCSS for a more readable, browser-friendly format with design tokens available
+- **Platform-independent**: Fully interoperable with any tech stack or framework
 
 ## Why Subtxt DS?
 
-This project was created due to personal need, for a few key reasons:
-
-- **Modern CSS showcase**: It's fun to have a little celebration 🎉 of CSS's now native algorithmic functionality and increasing maturity as a design language!
-- **Code-first workflow**: Subtxt DS inverts the traditional design-to-code workflow. Beginning with CSS, we can easily test initial color and typography choices in the browser environment. An algorithmic approach to creating a base design system just feels more efficient at first.
-- **Fluid design, offline**: Provides an offline method to use fluid type and space scaling [similar to Utopia](https://utopia.fyi/) using only CSS (this is because sometimes the author can't afford the internet, but still wants to generate fluid scales!)
-- **Hex colors for accessibility testing**: Designers concerned with accessibility may need to spend a lot of time intially tweaking colour palettes to meet accessibility standards. The author finds it helpful to have a hex palette generated that they can copy paste to https://www.aremycolorsaccessible.com/palette for testing.
-- **Design tokens for Penpot ++**: Manually adding CSS generated tokens to Penpot is a pain, so why not just export any compatible custom properties to a JSON file? While we're at it, all our custom properties are also exported into a second JSON file that follows WCAG design token guidelines.
-
-## What's Included
-
-- **Fluid typography system**: Responsive type scales that work in any viewport
-- **Spatial rhythm**: Consistent spacing relationships across all screen sizes
-- **Color system**: Straightforward color management with CSS's hsl() function
-- **CSS reset and base styles**: Based on [Andy Bell's work](https://piccalil.li/blog/a-more-modern-css-reset/) with minimal adjustments, providing a simple reset and global defaults for all key HTML elements
-- **Build tools**: Dual-runtime PostCSS configurations for both Deno and Node.js environments
-- **Design token export**: Automatic extraction of design tokens to JSON for design tool integration
+- **Modern CSS showcase**: It's fun to celebrate 🎉 CSS's now native algorithmic functionality and increasing maturity!
+- **Code-first workflow**: Invert the traditional design-to-code workflow, easily testing initial colors, typography and spacing choices in the browser environment, first.
+- **Fluid design, offline**: Use a totally offline method to calculate fluid scaling [similar to Utopia](https://utopia.fyi/)
+- **Accessible colour combos**: Plan an accessible colour scheme by copying the generated hex palette to https://www.aremycolorsaccessible.com/palette
+- **Design tokens for Penpot ++**: Generate Penpot-compatible design tokens to an importable JSON file (note that all custom properties are also exported into a second JSON file that follows WCAG design token guidelines)
 
 ## Build System
 
@@ -81,7 +71,7 @@ npm run build:watch
 
 ## PostCSS Plugins
 
-The build system includes custom PostCSS plugins that enhance the development experience. These plugins work together to create a powerful, fluid design system that maintains consistency across all viewport sizes while generating useful design artifacts.
+The build system includes three custom PostCSS plugins that enhance the development experience.
 
 ### postcss-process-colors
 
@@ -118,16 +108,12 @@ These plugins are sequenced in a specific order to create a complete design syst
 2. Then, `postcss-process-calcs` simplifies the complex fluid typography and spacing calculations
 3. Finally, `postcss-export-tokens` extracts all design tokens for use in design tools
 
-This sequence ensures that the final CSS is optimized for browser performance while still generating all the necessary design artifacts for a seamless design-to-code workflow.
-
 ## Design Token Integration
 
 When you run the build, two JSON files are generated in the `dist` directory:
 
 - `design-tokens-penpot.json`: Formatted for direct import into Penpot design tool
 - `design-tokens-all.json`: A flat structure containing all tokens for use with other tools
-
-This enables a seamless workflow where you can design in the browser, export to design tools, and then implement the final design back into code.
 
 ## Project Structure
 
@@ -148,32 +134,33 @@ subtxt-ds/
 
 The dual-runtime setup allows you to use whichever environment you prefer while maintaining identical functionality. 
 
+## CSS reset and base element styles provided
+
+The CSS reset and base style definitions in the `css/global` folder are [completely based on code shared by Andy Bell of Piccalilli](https://piccalil.li/blog/a-more-modern-css-reset/), with only some small changes, and aim to follow the [CUBE methodology](https://cube.fyi/css.html). Minimal adjustments have been made, providing a simple reset and global defaults for all key HTML elements.
+
 ## How to use Subtxt DS:
 
 1. Download the latest release from the [Github repository](https://github.com/saltofthemar/subtxt-ds), unzip it and go to the new subtxt-ds directory.
 
 2. Choose and install the build system you prefer. The Deno and Node.js build systems are provided for your convenience. 
    - If you use the build system, the stylesheet you will need to use is `dist/styles.css`. 
-   - If you don't use the build system, you will need to use `css/styles.css`.
+   - If you don't want use the build system, `css/styles.css` will be your go-to (just include the whole `/css` directory in your project)
 
-3. Make changes as you go to the files in the `css` folder
+3. Make changes as needed to the files in the `css` folder until you feel happy with the results:
    - Configure fluid scaling of type and space in `css/vars/config.css`
    - Configure base colour palette in `css/vars/colors.css`
    - Configure your fonts and type in `css/vars/fonts.css` and `css/vars/typography.css`
    - Check the other files in `css/vars` to see what else you can configure!
 
-4. In the `css/utils` folder, you'll find the pure CSS magic that powers our fluid type and space scales! 
-   - You probably don't want to change the files in the utils folder very often. The contain all the math functions used to determine clamp values for our fluid type and space scales. It's the whole reason we wrote this code, so take a look if you're interested in what CSS can do now!
-   - The key values for these calculations are in `css/vars/config.css`, which you definitly should change! This is where we can adjust the entire type and spacing for our project in one place.
-   - Modern browsers can read these calculations just fine, but they are an eyeful. That's why we have the build system!
+4. In the `css/utils` folder, you'll find the vanilla CSS magic that powers our fluid type and space scales. You probably won't want to change the files in the `css/utils` folder, but you might want to have a look at what's happening under the hood. Here you'll find all the maths used to determine clamp values for our fluid type and space scales. It's the whole reason for this project, so take a look if you're interested in what kinds of algorithmic calculations CSS can do now, with no need for SASS.
 
-5. Run the build command to generate new processed CSS and design tokens in the dist folder (using `deno task build` or `npm run build`)
+5. Configure your preferred scale and all key settings in `css/vars/config.css`, which holds all the values needed to calculate the fluid scaling.
 
-6. You can test your styles by viewing the `kitchen-sink.html` file in the demo folder.
+6. Run the build command to generate new processed CSS and design tokens in the dist folder (using `deno task build` or `npm run build`)
+
+7. You can test your styles by viewing the `kitchen-sink.html` file in the demo folder.
 
 ## License
-
-The CSS reset and base style definitions in the `css/global` folder are [completely based on code shared by Andy Bell of Piccalilli](https://piccalil.li/blog/a-more-modern-css-reset/), with only some small changes, and aim to follow the [CUBE methodology](https://cube.fyi/css.html).
 
 Subtxt DS is licensed under the GNU General Public License v3.0. See the [LICENSE](./LICENSE) file for details.
 
