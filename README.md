@@ -5,6 +5,66 @@
 
 Subtxt DS is a fluid CSS-based design system that generates a set of algorithmically calculated custom properties, providing styles that maintain typographic and spatial relationships in viewports of all sizes, without using media queries. We can now achieve this using vanilla CSS, and that is exciting!
 
+## Table of Contents
+
+- [How fluid scaling works](#how-fluid-scaling-works)
+- [The type scale](#the-type-scale)
+- [Key features](#key-features)
+- [Why Subtxt DS?](#why-subtxt-ds)
+- [Configuring your scale](#configuring-your-scale)
+- [Build it with PostCSS and Deno or Node.js](#build-it-with-postcss-and-deno-or-nodejs-or-dont)
+  - [Using Deno](#using-deno)
+  - [Using Node.js](#using-nodejs)
+- [PostCSS plugins](#postcss-plugins)
+  - [postcss-process-colors](#postcss-process-colors)
+  - [postcss-process-calcs](#postcss-process-calcs)
+  - [postcss-export-tokens](#postcss-export-tokens)
+  - [Why PostCSS rather than native CSS math?](#why-postcss-rather-than-native-css-math)
+- [Design token integration](#design-token-integration)
+- [Project structure](#project-structure)
+- [CSS reset and base element styles](#css-reset-and-base-element-styles-provided)
+- [How to use Subtxt DS](#how-to-use-subtxt-ds)
+- [License](#license)
+
+## How fluid scaling works
+
+Traditional responsive typography uses media queries to jump between fixed sizes at breakpoints — small text on mobile, bigger text on desktop, with an abrupt switch between them. Subtxt DS takes a different approach: type and spacing scale *continuously* across all viewport widths, with no breakpoints needed.
+
+This is achieved using CSS's native `clamp()` function combined with viewport units:
+
+```css
+font-size: clamp(1rem, 0.875rem + 0.625vw, 1.25rem);
+```
+
+This single declaration means:
+- Never smaller than `1rem` (the minimum)
+- Never larger than `1.25rem` (the maximum)  
+- Smoothly interpolates between them based on viewport width
+
+The minimum and maximum values, and the rate of scaling between them, are all derived algorithmically from a small set of configuration values you set in `css/vars/config.css` — your minimum and maximum viewport widths, your base font size, and your chosen type scale ratio. Change those few values and the entire system recalculates.
+
+This approach is closely related to the methodology pioneered by [Utopia](https://utopia.fyi/), with the key difference that Subtxt DS performs all calculations natively in CSS using `calc()`, `pow()`, and `round()` — no external tool or build step required to generate the scale values themselves.
+
+## The type scale
+
+Subtxt DS generates a modular type scale — a sequence of sizes where each step is a consistent multiple of the previous one. The scale ratio 
+(configured in `css/vars/config.css`) controls how dramatically sizes differ between steps.
+
+Steps are named intuitively:
+
+| Custom property | Role |
+|---|---|
+| `--size-step-00` | Fine print, captions |
+| `--size-step-0` | Base body text |
+| `--size-step-1` | Small headings, labels |
+| `--size-step-2` | Section headings |
+| `--size-step-3` | Page headings |
+| `--size-step-4` | Hero/display text |
+
+Each step is fluid — not just the base size. So `--size-step-3` on a narrow mobile viewport and on a wide desktop monitor are both appropriate for their context, without you writing a single media query.
+
+The same logic applies to spacing. Spacing steps are harmonically related to the type scale, so your layout breathes proportionally as the text does.
+
 ## Build it with PostCSS and Deno or Node.js (or don't)
 
 Subtxt DS was originally created to explore a pure CSS solution to scalable type and interfaces using some of CSS's new math features. It has since been expanded to include a PostCSS build which generates a more succinct production stylesheet, along with a couple of design goodies.
@@ -23,7 +83,6 @@ After building the project with either Deno or Node.js, all yummy new design goo
   - Import the generated, WCAG-compliant design tokens in `dist/design-tokens-all.json` into other tools that use design tokens
   - Use the generated hex color palette in `dist/hex-color-palette.txt` for accessibility testing at [Are My Colors Accessible](https://www.aremycolorsaccessible.com/palette)
 
-
 ## Key Features
 
 - **Pure CSS**: Uses only vanilla CSS features (custom properties, calc, clamp, pow, round) to achieve fluid type and spacing scales
@@ -38,6 +97,27 @@ After building the project with either Deno or Node.js, all yummy new design goo
 - **Fluid design, offline**: Use a totally offline method to calculate fluid scaling [similar to Utopia](https://utopia.fyi/)
 - **Accessible colour combos**: Plan an accessible colour scheme by copying the generated hex palette to https://www.aremycolorsaccessible.com/palette
 - **Design tokens for Penpot ++**: Generate Penpot-compatible design tokens to an importable JSON file (note that all custom properties are also exported into a second JSON file that follows WCAG design token guidelines)
+
+## Configuring your scale
+
+All the values that drive the fluid system live in one place: `css/vars/config.css`. You only need to understand a handful of settings to control the entire system:
+
+```css
+/* The viewport widths between which scaling occurs */
+--fluid-min-width: 320;   /* narrow mobile */
+--fluid-max-width: 1240;  /* wide desktop */
+
+/* Your base font size in px (usually 16) */
+--fluid-base-size: 16;
+
+/* The scale ratio between type steps */
+/* Common values: 1.2 (minor third), 1.25 (major third), 1.333 (perfect fourth) */
+--fluid-scale-ratio: 1.25;
+```
+
+A larger scale ratio produces more dramatic size differences between steps — appropriate for expressive editorial designs. A smaller ratio produces a subtler, more uniform scale — better for dense UI or documentation. The [Modular Scale](https://www.modularscale.com/) tool is useful for visualising how different ratios feel before committing to one.
+
+You do not need to touch any files outside `css/vars/` for most customisation. The utility files in `css/utils/` contain the mathematical machinery and are not intended to be edited directly.
 
 ## Build System
 
@@ -108,6 +188,16 @@ These plugins are sequenced in a specific order to create a complete design syst
 2. Then, `postcss-process-calcs` simplifies the complex fluid typography and spacing calculations
 3. Finally, `postcss-export-tokens` extracts all design tokens for use in design tools
 
+### Why PostCSS rather than native CSS math?
+
+The source CSS uses CSS-native math (`calc()`, `pow()`, `clamp()`) which modern browsers handle correctly. The PostCSS build step exists for two practical reasons:
+
+1. **Browser compatibility**: Some older browsers don't support `pow()`  or nested `calc()` expressions. The PostCSS plugins resolve these into pre-calculated values so the output CSS works everywhere.
+
+2. **Design tool integration**: Penpot and other design tools can't interpret `clamp()` expressions as token values. The export plugins convert fluid values into formats these tools understand.
+
+If you only need to support modern browsers and don't use design token tools, the raw `css/styles.css` works without any build step at all.
+
 ## Design Token Integration
 
 When you run the build, two JSON files are generated in the `dist` directory:
@@ -122,7 +212,7 @@ subtxt-ds/
 ├── css/                        # Source CSS files
 ├── dist/                       # Build output (generated)
 │   ├── styles.css              # Processed CSS
-│   ├── design-tokens-*.json    # Exported design tokens
+│   ├── design-tokens-all.json    # Exported design tokens
 │   └── hex-color-palette.txt   # Color accessibility testing
 ├── demo/                       # Example HTML files
 ├── postcss-tools/              # Build system
